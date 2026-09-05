@@ -37,3 +37,24 @@ To verify the architecture scales beyond 2D toy problems, the model was evaluate
 Generate and train on mathematical distributions (e.g., `square`, `double_spiral`, `ring`):
 ```bash
 python run.py --mode train --shape double_spiral --epochs 16384
+
+
+
+
+
+
+
+### Using Custom Datasets
+
+To train the flow on your own data, prepare a binary NumPy array (`.npy`) that meets the following specifications:
+* **Format:** Single `.npy` file (not `.npz`).
+* **Shape:** `(N_samples, D_dimensions)`.
+* **Type:** `np.float32` (JAX default precision).
+* **Scale:** Data must be pre-normalized ($\mu=0, \sigma=1$) to prevent ODE solver stiffness.
+
+```python
+import numpy as np
+
+# Example custom data preparation
+my_data = np.random.randn(10000, 50).astype(np.float32)
+np.save("my_custom_dataset.npy", my_data)
