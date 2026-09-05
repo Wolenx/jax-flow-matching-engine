@@ -16,11 +16,10 @@ This repository implements a scalable generative framework that maps a standard 
 The model seamlessly learns highly non-linear 2D topological structures. The neural velocity field $v(t,x)$ successfully transports particles from a Gaussian prior to the target manifolds.
 
 <p align="center">
-  <img src="assets/Figure Circle probability.png" alt="Vector Field Animation" width="45%">
-  <img src="assets/archimed double spiral best.png" alt="Density Heatmap" width="45%">
+  <img src="assets/vector_field_square.gif" alt="Vector Field Animation" width="45%">
   <img src="assets/density square.png" alt="Density Heatmap" width="45%">
 </p>
-*Left: Evolution of the neural velocity field over time $t \in [0, 1]$. Right: Final generated probability density.*
+*Left: Evolution of the neural velocity field over time t in [0, 1]. Right: Final generated probability density.*
 
 ## Quantitative Evaluation: High-Dimensional Scaling
 
