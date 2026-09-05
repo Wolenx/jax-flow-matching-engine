@@ -9,7 +9,7 @@ This repository implements a scalable generative framework that maps a standard 
 * **Pure JAX/Equinox:** Fully functional neural velocity field architecture (`NeuralVelocityField`) utilizing `jax.lax.scan` to bypass Python interpreter overhead and keep the GPU saturated during training.
 * **VRAM Data Locking:** Eliminates XLA compilation bloat by locking normalized datasets directly into GPU memory as pure `DeviceArray` pointers prior to JIT compilation.
 * **Continuous-Time Dynamics:** Uses `Diffrax` (Tsit5) to solve the underlying probability flow ODEs during both inference and evaluation.
-* **Trace Estimation:** Implements a custom Skilling-Hutchinson trace estimator to approximate the divergence of the neural vector field, enabling exact log-likelihood (NLL) computation via augmented ODEs without full Jacobian calculations.
+* **Trace Estimation:** Implements a custom Skilling-Hutchinson trace estimator to approximate the divergence of the neural vector field, enabling exact log-likelihood (NLL) computation via augmented ODEs without full Jacobian calculations (For low dimensions under 50 the engine still calculates the exact Jacobian as it is not expensive yet).
 
 ## Qualitative Results: 2D Manifolds
 
@@ -29,6 +29,8 @@ To verify the architecture scales beyond 2D toy problems, the model was evaluate
 * **Our Flow Matching Model:** 3.55 NLL
 
 *Evaluated on an unseen 20% test split. The model successfully compressed the probability density into the 30D target manifold, lowering the NLL significantly without overfitting the limited sample size (evaluated using a 64x3 MLP capacity).*
+
+When trying to further train the Neural Network on the data set it quickly overfits since the data set is too small. Testing using bigger data sets may show better results.
 
 ## Usage
 
