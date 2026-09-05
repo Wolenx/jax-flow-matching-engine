@@ -30,7 +30,7 @@ To verify the architecture scales beyond 2D toy problems, the model was evaluate
 
 *Evaluated on an unseen 20% test split. The model successfully compressed the probability density into the 30D target manifold, lowering the NLL significantly without overfitting the limited sample size (evaluated using a 64x3 MLP capacity).*
 
-When trying to further train the Neural Network on the data set it quickly overfits since the data set is too small. Testing using bigger data sets may show better results.
+When trying to further train the Neural Network on the data set it quickly overfits since the data set is too small. Testing using larger data sets may bring better results and lower the NLL under 0.
 
 ## Usage
 
