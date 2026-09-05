@@ -17,7 +17,7 @@ The model seamlessly learns highly non-linear 2D topological structures. The neu
 
 <p align="center">
   <img src="assets/vector_field_square.gif" alt="Vector Field Animation" width="45%">
-  <img src="assets/density_square.png" alt="Density Heatmap" width="45%">
+  <img src="assets/heatmap_square.png" alt="Density Heatmap" width="45%">
 </p>
 *Left: Evolution of the neural velocity field over time t in [0, 1]. Right: Final generated probability density.*
 
