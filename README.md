@@ -39,6 +39,7 @@ Generate and train on mathematical distributions (e.g., `square`, `double_spiral
 ```bash
 python run.py --mode train --shape double_spiral --epochs 16384
 ```
+For testing purposes some pretrained models on my GPU have been included.
 
 ### 2. High-Dimensional Datasets (VRAM Locked)
 Train on custom `.npy` datasets. The architecture dynamically adjusts its dimensional width to match the pure VRAM arrays:
