@@ -69,6 +69,6 @@ def train(epochs: int, batch_size: int, vram_array=None):
             percent = ((block + 1) * steps_per_block / epochs) * 100
             print(f"Progress: {percent:.1f}% | Avg Loss: {avg_loss:.5f}")
 
-    model_filename = f"data/neural_velocity_field_{cfg.SHAPE}.eqx"
+    model_filename = f"Trained Models/neural_velocity_field_{cfg.SHAPE}.eqx"
     eqx.tree_serialise_leaves(model_filename, NeuralField)
     print(f"Model saved to {model_filename}")
