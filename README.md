@@ -35,6 +35,6 @@ To verify the architecture scales beyond 2D toy problems, the model was evaluate
 ## Usage
 
 ### 1. Training on Toy 2D Distributions
-Generate and train on mathematical distributions (e.g., `square`, `double_spiral`, `lattice`):
+Generate and train on mathematical distributions (e.g., `square`, `double_spiral`, `ring`):
 ```bash
 python run.py --mode train --shape double_spiral --epochs 16384
