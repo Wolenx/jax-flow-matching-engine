@@ -19,7 +19,7 @@ The model seamlessly learns highly non-linear 2D topological structures. The neu
   <img src="assets/vector_field_square.gif" alt="Vector Field Animation" width="45%">
   <img src="assets/heatmap_square.png" alt="Density Heatmap" width="45%">
 </p>
-*Left: Evolution of the neural velocity field over time t in [0, 1]. Right: Final generated probability density.*
+*Left: Evolution of the neural velocity field over time $t \in [0, 1]$. Right: Final generated probability density.*
 
 ## Quantitative Evaluation: High-Dimensional Scaling
 
@@ -36,14 +36,28 @@ To verify the architecture scales beyond 2D toy problems, the model was evaluate
 Generate and train on mathematical distributions (e.g., `square`, `double_spiral`, `ring`):
 ```bash
 python run.py --mode train --shape double_spiral --epochs 16384
+```
 
+### 2. High-Dimensional Datasets (VRAM Locked)
+Train on custom `.npy` datasets. The architecture dynamically adjusts its dimensional width to match the pure VRAM arrays:
+```bash
+python run.py --mode train --shape personalized --train-data data/real_30D_train.npy --epochs 16384
+```
 
+### 3. Evaluating Negative Log-Likelihood (NLL)
+Run the Hutchinson trace estimator through the Diffrax ODE solver on an unseen test set:
+```bash
+python run.py --mode eval --shape personalized --test-data data/real_30D_test.npy
+```
 
+### 4. Visualization
+Render the vector field animations or density heatmaps (for 2D models only):
+```bash
+python run.py --mode vector --shape square 
+python run.py --mode heatmap --shape square
+```
 
-
-
-
-### Using Custom Datasets
+## Using Custom Datasets
 
 To train the flow on your own data, prepare a binary NumPy array (`.npy`) that meets the following specifications:
 * **Format:** Single `.npy` file (not `.npz`).
@@ -57,3 +71,9 @@ import numpy as np
 # Example custom data preparation
 my_data = np.random.randn(10000, 50).astype(np.float32)
 np.save("my_custom_dataset.npy", my_data)
+```
+
+Run the pipeline by pointing the `--train-data` flag to your file:
+```bash
+python run.py --mode train --shape personalized --train-data my_custom_dataset.npy
+```
