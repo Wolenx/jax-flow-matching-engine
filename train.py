@@ -17,7 +17,7 @@ def get_target_sampler():
         "square": wrap(tg.sample_target_hollow_square),
         "personalized": tg.sample_dataset_vram 
     }
-    return routers.get(cfg.SHAPE, wrap(tg.sample_target_ring))
+    return routers.get(cfg.SHAPE, wrap(tg.sample_target_ring)) #to avoid running into an error if the specified shape is not supported
 
 def train(epochs: int, batch_size: int, vram_array=None):
     NeuralField = md.NeuralVelocityField(cfg.IN_SIZE, cfg.OUT_SIZE, cfg.WIDTH, cfg.DEPTH, cfg.KEY)
@@ -69,6 +69,6 @@ def train(epochs: int, batch_size: int, vram_array=None):
             percent = ((block + 1) * steps_per_block / epochs) * 100
             print(f"Progress: {percent:.1f}% | Avg Loss: {avg_loss:.5f}")
 
-    model_filename = f"neural_velocity_field_{cfg.SHAPE}.eqx"
+    model_filename = f"data/neural_velocity_field_{cfg.SHAPE}.eqx"
     eqx.tree_serialise_leaves(model_filename, NeuralField)
     print(f"Model saved to {model_filename}")
