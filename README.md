@@ -34,6 +34,8 @@ When trying to further train the Neural Network on the data set it quickly overf
 
 ## Usage
 
+Please note that this repos has been built to run on nvidia GPUs with support of CUDA 12.x or newer.
+
 ### 1. Training on Toy 2D Distributions
 Generate and train on mathematical distributions (e.g., `square`, `double_spiral`, `ring`):
 ```bash
