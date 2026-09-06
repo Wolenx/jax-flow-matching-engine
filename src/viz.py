@@ -17,7 +17,7 @@ def get_target_sampler():
         "ring": tg.sample_target_ring,
         "square": tg.sample_target_hollow_square,
     }
-    return routers.get(cfg.SHAPE, tg.sample_target_ring)
+    return routers.get(cfg.SHAPE, tg.sample_target_ring) # no visualization for vram data set since they may be of higher dimension
 
 def load_model():
     """Deserializes the trained Equinox model."""
