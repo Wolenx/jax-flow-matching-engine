@@ -7,7 +7,7 @@ WIDTH = 64
 DEPTH = 3
 KEY = jrd.key(2026)
 SEED = 1324  # Change this to test other possible outcomes of the training
-SHAPE = "ring"  # choose between : ring, lattice, square, double latice,personalized.
+SHAPE = "ring"  # choose between : ring, square, double latice,personalized.
 # For the personnalized setup it is usable if one has a specific data set they want to get the matching distribution (Refere to README.md)
 
 # Model visualization Config

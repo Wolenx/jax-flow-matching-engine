@@ -13,12 +13,11 @@ import matplotlib.animation as animation
 def get_target_sampler():
     """Maps the active SHAPE in config to the correct target sampler."""
     routers = {
-        "lattice": tg.sample_target_vortex_lattice,
         "spiral": tg.sample_target_double_spiral,
         "ring": tg.sample_target_ring,
         "square": tg.sample_target_hollow_square,
     }
-    return routers.get(cfg.SHAPE, tg.sample_target_file_csv)
+    return routers.get(cfg.SHAPE, tg.sample_target_ring)
 
 def load_model():
     """Deserializes the trained Equinox model."""
