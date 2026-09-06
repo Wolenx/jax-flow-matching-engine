@@ -9,17 +9,17 @@ def parse_args():
         formatter_class=argparse.ArgumentDefaultsHelpFormatter
     )
     
-    # 1. Expanded Execution Modes
+    # Execution Modes
     parser.add_argument("--mode", choices=["train", "eval", "heatmap", "vector", "all"], default="train", help="Select the pipeline stage to execute. Use 'eval' for high-D datasets.")
     parser.add_argument("--interactive", action="store_true", help="Render matplotlib plots in GUI windows instead of saving them to disk.")
     
-    # 2. Target & Dataset Controls
+    # Target & Dataset Controls
     parser.add_argument("--resolution", type=int,default=cfg.HEATMAP_RESOLUTION, help="Resolution of the heatmap generated in heatmap mode") 
     parser.add_argument("--shape", choices=["square", "spiral", "ring", "personalized"], default=cfg.SHAPE)
     parser.add_argument("--train-data", type=str, default="data/train.npy", help="Path to binary train data (Used if shape='personalized').")
     parser.add_argument("--test-data", type=str, default="data/test.npy", help="Path to binary test data (Used if mode='eval').")
     
-    # 3. Model & Training Hyperparameters
+    # Model & Training Hyperparameters
     parser.add_argument("--seed", type=int, default=cfg.SEED)
     parser.add_argument("--width", type=int, default=cfg.WIDTH)
     parser.add_argument("--depth", type=int, default=cfg.DEPTH)
